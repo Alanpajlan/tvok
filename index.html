@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>alantv@project</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top left, #1f1f2e, #0f0f17);
+    color: white;
+    padding: 20px;
+}
+
+.container {
+    text-align: center;
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+    animation: fadeIn 1.2s ease;
+}
+
+h1 {
+    font-size: clamp(24px, 5vw, 42px);
+    margin-bottom: 10px;
+}
+
+h1 span {
+    background: linear-gradient(90deg, #00f7ff, #6a00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+p {
+    opacity: 0.75;
+    margin-bottom: 25px;
+}
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(90deg, #00f7ff, #6a00ff);
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(106, 0, 255, 0.5);
+}
+
+.image-box {
+    margin-top: 20px;
+    display: none;
+    animation: showImage 0.8s ease forwards;
+}
+
+.image-box img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #00f7ff;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes showImage {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Welcome <span>alantv@project</span></h1>
+    <p>Enjoy The World Comrade</p>
+
+    <!-- GET APP -->
+    <a href="https://tvok.pages.dev/app.apk" download>
+        <button class="btn">Get App</button>
+    </a>
+
+    <!-- COPY PLAYLIST -->
+    <button class="btn" onclick="copyLink()">CpyPl</button>
+
+    <!-- NYAWITS -->
+    <button class="btn" onclick="showImage()">Nyawits</button>
+
+    <div class="image-box" id="sawitImage">
+        <img src="nyawits.png" alt="Tandan Sawit">
+    </div>
+</div>
+
+<div class="toast" id="toast">Copied to clipboard!</div>
+
+<script>
+function showImage() {
+    document.getElementById("sawitImage").style.display = "block";
+}
+
+function copyLink() {
+    const url = "https://tvok.pages.dev/tvoks";
+    navigator.clipboard.writeText(url).then(() => {
+        const toast = document.getElementById("toast");
+        toast.classList.add("show");
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2000);
+    });
+}
+</script>
+
+</body>
+</html>
