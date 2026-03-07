@@ -1,55 +1,54 @@
 name: Auto Update Playlist
 
 on:
-schedule:
-- cron: "0 * * * *"
-workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
 
 permissions:
-contents: write
+  contents: write
 
 jobs:
-update:
-runs-on: ubuntu-latest
+  update:
+    runs-on: ubuntu-latest
 
-steps:
-  - name: Checkout repo
-    uses: actions/checkout@v4
-    with:
-      fetch-depth: 0
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-  - name: Download playlist
-    run: |
-      curl -L https://raw.githubusercontent.com/hnnyo/cct/main/aku.m3u -o new_tvok
+      - name: Download playlist
+        run: |
+          curl -L https://raw.githubusercontent.com/hnnyo/cct/main/aku.m3u -o new_tvok
 
-  - name: Compare playlist
-    id: compare
-    run: |
-      if [ -f tvok ]; then
-        if cmp -s new_tvok tvok; then
-          echo "same=true" >> $GITHUB_OUTPUT
-        else
-          echo "same=false" >> $GITHUB_OUTPUT
-        fi
-      else
-        echo "same=false" >> $GITHUB_OUTPUT
-      fi
+      - name: Compare playlist
+        id: compare
+        run: |
+          if [ -f tvok ]; then
+            if cmp -s new_tvok tvok; then
+              echo "same=true" >> $GITHUB_OUTPUT
+            else
+              echo "same=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "same=false" >> $GITHUB_OUTPUT
+          fi
 
-  - name: Replace file if changed
-    if: steps.compare.outputs.same == 'false'
-    run: |
-      mv new_tvok tvok
+      - name: Replace file if changed
+        if: steps.compare.outputs.same == 'false'
+        run: |
+          mv new_tvok tvok
 
-  - name: Commit update
-    if: steps.compare.outputs.same == 'false'
-    run: |
-      git config --global user.name "playlist-bot"
-      git config --global user.email "bot@github.com"
+      - name: Commit update
+        if: steps.compare.outputs.same == 'false'
+        run: |
+          git config --global user.name "playlist-bot"
+          git config --global user.email "bot@github.com"
+          git add tvok
+          git commit -m "Update playlist"
+          git push
 
-      git add tvok
-      git commit -m "Update playlist"
-      git push
-
-  - name: No changes
-    if: steps.compare.outputs.same == 'true'
-    run: echo "Playlist unchanged"
+      - name: No changes
+        if: steps.compare.outputs.same == 'true'
+        run: echo "Playlist unchanged"
