@@ -15,15 +15,21 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Download playlist
         run: |
           curl -L https://raw.githubusercontent.com/hnnyo/cct/refs/heads/main/aku.m3u -o tvok.m3u
 
-      - name: Commit update
+      - name: Commit if changed
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
           git add tvok.m3u
-          git commit -m "Auto update playlist" || echo "No changes"
-          git push
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Auto update playlist"
+            git push
+          fi
