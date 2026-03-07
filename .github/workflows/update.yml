@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Download playlist
         run: |
@@ -25,7 +27,7 @@ jobs:
           git config --global user.name "playlist-bot"
           git config --global user.email "bot@github.com"
 
-          git fetch origin
+          git fetch origin main
           git reset --hard origin/main
 
           git add tvok.m3u
@@ -34,5 +36,5 @@ jobs:
             echo "No changes"
           else
             git commit -m "Auto update playlist"
-            git push origin main
+            git push origin main --force
           fi
