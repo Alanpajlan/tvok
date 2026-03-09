@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>alantv@project</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top left, #1f1f2e, #0f0f17);
+    color: white;
+    padding: 20px;
+}
+
+.container {
+    text-align: center;
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+}
+
+h1 {
+    font-size: clamp(24px, 5vw, 42px);
+    margin-bottom: 10px;
+}
+
+h1 span {
+    background: linear-gradient(90deg, #00f7ff, #6a00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+p {
+    opacity: 0.75;
+    margin-bottom: 25px;
+}
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(90deg, #00f7ff, #6a00ff);
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(106, 0, 255, 0.5);
+}
+
+.copy-menu{
+    display:none;
+    margin-top:10px;
+}
+
+.copy-menu button{
+    width:100%;
+    margin-bottom:10px;
+    padding:12px;
+    border:none;
+    border-radius:20px;
+    background:#1e1e2f;
+    color:white;
+    cursor:pointer;
+}
+
+.image-box {
+    margin-top: 20px;
+    display: none;
+}
+
+.image-box img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #00f7ff;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.toast.show {
+    opacity: 1;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Welcome <span>alantv@project</span></h1>
+    <p>Enjoy The World Comrade</p>
+
+    <!-- GET APP -->
+    <a href="https://tvok.pages.dev/app.apk" download>
+        <button class="btn">Get App</button>
+    </a>
+
+    <!-- COPY PLAYLIST -->
+    <button class="btn" onclick="toggleMenu()">Copy playlist</button>
+
+    <div class="copy-menu" id="copyMenu">
+        <button onclick="copyLink('https://tvok.pages.dev/tvok')">TVOK</button>
+        <button onclick="copyLink('https://tvok.pages.dev/tvok2')">TVOK2</button>
+    </div>
+
+    <!-- NYAWITS -->
+    <button class="btn" onclick="showImage()">Nyawits</button>
+
+    <div class="image-box" id="sawitImage">
+        <img src="nyawits.png" alt="Tandan Sawit">
+    </div>
+</div>
+
+<div class="toast" id="toast">Copied to clipboard!</div>
+
+<script>
+
+function toggleMenu(){
+    const menu = document.getElementById("copyMenu");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+function showImage() {
+    const img = document.getElementById("sawitImage");
+    img.style.display = img.style.display === "block" ? "none" : "block";
+}
+
+function copyLink(url) {
+    navigator.clipboard.writeText(url).then(() => {
+        const toast = document.getElementById("toast");
+        toast.classList.add("show");
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2000);
+    });
+}
+
+</script>
+
+</body>
+</html>
