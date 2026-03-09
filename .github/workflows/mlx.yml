@@ -1,0 +1,71 @@
+name: Auto Update MLF Playlist
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install yt-dlp
+        run: |
+          pip install -U yt-dlp
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Generate playlist
+        run: |
+
+          VIDEO="https://id.xhamster.com/videos/ibu-tiri-muslim-berhijab-dientot-habis-habisan-sampai-dicrot-di-dalam-di-kamar-hotel-xhPwFEX"
+
+          URL1=""
+
+          for i in 1 2 3
+          do
+            URL1=$(yt-dlp \
+            --no-playlist \
+            --impersonate chrome \
+            --add-header "User-Agent: Mozilla/5.0" \
+            --add-header "Referer: https://xhamster.com/" \
+            -f "best[ext=m3u8]/best" \
+            -g "$VIDEO" 2>/dev/null || true)
+
+            if [ -n "$URL1" ]; then
+              break
+            fi
+
+            echo "retry $i..."
+            sleep 5
+          done
+
+          echo "#EXTM3U" > mlf.m3u
+          echo "" >> mlf.m3u
+
+          if [ -n "$URL1" ]; then
+            echo "#EXTINF:-1 tvg-id=\"mlf1\" tvg-name=\"mlf1\" group-title=\"MLF\",mlf1" >> mlf.m3u
+            echo "$URL1" >> mlf.m3u
+          else
+            echo "#EXTINF:-1 tvg-id=\"mlf1\" tvg-name=\"mlf1\" group-title=\"MLF\",mlf1" >> mlf.m3u
+            echo "#URL_NOT_FOUND" >> mlf.m3u
+          fi
+
+          echo "PLAYLIST RESULT:"
+          cat mlf.m3u
+
+      - name: Commit playlist
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+
+          git add mlf.m3u
+          git diff --cached --quiet || git commit -m "update playlist"
+          git push
