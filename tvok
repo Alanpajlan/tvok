@@ -715,7 +715,7 @@ rtmp:///live/test123
 
 #EXTINF:-1 group-title="1. INDONESIA" tvg-logo="https://i.ibb.co.com/PgFHMBw/20250101-164251.jpg",Berita Satu
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1
-https://aspaltvpasti.top/Drmvidbos/Akun121/bosstv.m3u8?id=783
+https://aspaltvpasti.top/Drmvidbos/Akun121/bosstv.m3u8?id=18280
 
 
 ---
@@ -859,6 +859,11 @@ https://gooo.blog/opix/genx.m3u8?id=tvrisport&cyev=eyJ0eXAiOiJKV1QiLCJhbGciOiJIU
 https://live.cnnindonesia.com/livecnn/smil:cnntv.smil/index.m3u8
 
 #EXTINF:-1 group-title="1. INDONESIA" tvg-logo="https://lokerbumn.com/wp-content/uploads//NET-TV.jpg", MDTV
+#EXTVLCOPT:http-user-agent=Oxygen TV/5.9.240112 (Linux; Android 13) ExoPlayerLib/2.18.1
+https://wakhaji.biz.id/hls/hls-oxygen.php?id=nettv-hd
+
+
+
 #EXTVLCOPT:http-user-agent=DENSGO/3.00.00 (Linux;Android 15.0.0;) ExoPlayerLib/2.19.1
 #EXTVLCOPT:http-referrer=http://dens.tv
 http://op-group1-swiftservehd-1.dens.tv/h/h223/02.m3u8
@@ -3155,6 +3160,8 @@ https://sky-nz.b-cdn.net/skysport9/master.mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=01d02c97d1c949f9877acd230dcaa56d:708410b8bf1f4e998931183e8fab5d1e
 https://sky-nz.b-cdn.net/skysportselect/master.mpd
+
+
 
 
 
