@@ -3057,14 +3057,14 @@ https://cdn08jtedge.indihometv.com/dassdvr/130/afc/manifest.mpd
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=d0c607f0958a4d85bb7b2be81e9ef278:cb3e057a2fce88366d0ef4d6dcdd7a5f
-https://cdn08jtedge.indihometv.com/dassdvr/133/hgtv/manifest.mpd
+https://cdn08jtedge.indihometv.com/dassdvr/134/hgtv/manifest.mpd
 
 #EXTINF:-1 tvg-name="TLC" tvg-logo="https://i.ibb.co.com/g3N7Jrt/tlc.png" group-title="1. INDONESIA", TLC Max
 #EXTVLCOPT:http-referrer=https://www.indihometv.com/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=0f437016dfa54cc584854609df0ca896:2775a3a5d969c8effa8f7a6a7b7c3243
-https://cdn08jtedge.indihometv.com/dassdvr/130/tlc/manifest.mpd
+https://cdn08jtedge.indihometv.com/dassdvr/133/tlc/manifest.mpd
 
 #EXTINF:-1 tvg-name="TVN MOVIES" tvg-logo="https://i.ibb.co.com/vc5S95M/tvnmovies.png" group-title="1. INDONESIA", TVN MOVIES Max
 #EXTVLCOPT:http-referrer=https://www.indihometv.com/
@@ -3078,7 +3078,7 @@ https://cdn08jtedge.indihometv.com/dass/130/tvnmovies/manifest.mpd
 #EXTVLCOPT:http-user-agent=IndiHomeTV/8.7.12 (Linux;Android 15.0.0;) ExoPlayerLib/2.19.1
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=b6568e0d0a23406ebbe24619fdd063ed:4d6a505b7361c5e1b07ffa72155d045f
-https://cdn08jtedge.indihometv.com/dassdvr/133/net/manifest.mpd
+https://cdn08jtedge.indihometv.com/dassdvr/134/net/manifest.mpd
 
 
 
@@ -3155,6 +3155,8 @@ https://sky-nz.b-cdn.net/skysport9/master.mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=01d02c97d1c949f9877acd230dcaa56d:708410b8bf1f4e998931183e8fab5d1e
 https://sky-nz.b-cdn.net/skysportselect/master.mpd
+
+
 
 
 
